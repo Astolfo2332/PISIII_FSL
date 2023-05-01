@@ -12,6 +12,6 @@ ENV FSLOUTPUTTYPE="NIFTI_GZ"
 
 WORKDIR /app
 
-COPY bet_analysis.sh /app
+COPY StudyDir_18042023014906 /app
 
 ENTRYPOINT ["/app/bet_analysis.sh"]
