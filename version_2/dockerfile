@@ -18,7 +18,7 @@ ENV LD_LIBRARY_PATH=${FSLDIR}/lib:$LD_LIBRARY_PATH
 
 WORKDIR /app
 
-COPY ST1/ /app
+COPY . /app
 
 
 RUN mkdir /nifti && \ 
