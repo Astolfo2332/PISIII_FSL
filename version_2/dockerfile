@@ -18,12 +18,19 @@ ENV LD_LIBRARY_PATH=${FSLDIR}/lib:$LD_LIBRARY_PATH
 
 WORKDIR /app
 
-
-COPY requirements.txt /app
-RUN pip3 install --no-cache-dir -r requirements.txt
+COPY ST1/ /app
 
 
-COPY . /app
+RUN mkdir /nifti && \ 
+for folder in /app/*; do dcm2niix -o "$folder" "$folder"; \
+mv "$folder"/*.nii /nifti; \ 
+done 
 
-CMD ["python3", "app.py"]
+RUN for file in /app/NIfTI/*/*.nii*; do \
+        subfolder=$(basename "$(dirname "$file")"); \
+        filename=$(basename "$file"); \
+mkdir /app/brain && \
+for file in /nifti/*.nii; do base=$(basename $file); bet $file /app/brain/${base%.nii}_brain -f 0.5 -g 0 -m; done && \
+    mv /app/*/*_brain.nii.gz /data/; \
+done
 

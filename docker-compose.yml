@@ -1,16 +1,6 @@
-version: "3.3"
+version: "3"
 services:
-    flask:
-        build:
-            context: .
-            dockerfile: ./Dockerfile
-        image: pisiii_fsl:latest
-        working_dir: /opt/inicio/
-        ports:
-            - 5000:5000
-        volumes:
-            - ./pruebas/:/opt/pruebas/
-        stdin_open: true
-        tty: true
-        expose:
-            - 5000
+  fsl:
+    build: .
+    volumes:
+      - ./data:/data
