@@ -7,9 +7,20 @@ RUN apt-get update && \
     software-properties-common \
     python3 \
     python3-pip && \
+    apt-get install -y git build-essential cmake zlib1g-dev  &&\
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-
+RUN git clone https://github.com/rordenlab/dcm2niix.git && \
+    cd dcm2niix && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make && \
+    make install && \
+    cd ../.. && \
+    rm -rf dcm2niix
+    
 RUN wget -O- https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py | python3 - -d /usr/local/fsl 
 
 ENV FSLDIR=/usr/local/fsl
