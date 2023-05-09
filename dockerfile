@@ -18,34 +18,7 @@ RUN git clone https://github.com/rordenlab/dcm2niix.git && \
     cd ../.. && \
     rm -rf dcm2niix
     
- 
-RUN apt-get update && \
-    apt-get install -y lsb-release wget && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-RUN wget -O - https://deb.nodesource.com/setup_14.x | bash - && \
-    apt-get install -y nodejs && \
-    npm install -g bids-validator
-
-RUN apt-get update && \
-    apt-get install -y libopenmpi-dev && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-
-RUN wget https://github.com/libMesh/libmesh/releases/download/v1.7.1/libmesh-1.7.1.tar.bz2 && \
-    tar xvjf libmesh-1.7.1.tar.bz2 && \
-    cd libmesh-1.7.1 && \
-    ./configure && \
-    make && \
-    make install && \
-    cd .. && \
-    rm -rf libmesh-1.7.1 libmesh-1.7.1.tar.bz2
-
-ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-
-    
+   
 ENV FSLDIR="/usr/share/fsl/5.0"
 ENV PATH="${FSLDIR}/bin:${PATH}"
 ENV FSLOUTPUTTYPE="NIFTI_GZ"
@@ -62,11 +35,11 @@ for folder in /app/*; do dcm2niix -o "$folder" "$folder"; \
 mv "$folder"/*.nii /nifti; \ 
 done 
 
-RUN for file in /app/NIfTI/*/*.nii*; do \
-        subfolder=$(basename "$(dirname "$file")"); \
-        filename=$(basename "$file"); \
-mkdir /app/brain && \
-for file in /nifti/*.nii; do base=$(basename $file); bet $file /app/brain/${base%.nii}_brain -f 0.5 -g 0 -m; done && \
-    mv /app/*/*_brain.nii.gz /data/; \
-done
+#RUN for file in /app/NIfTI/*/*.nii*; do \
+#        subfolder=$(basename "$(dirname "$file")"); \
+#        filename=$(basename "$file"); \
+#mkdir /app/brain && \
+#for file in /nifti/*.nii; do base=$(basename $file); bet $file /app/brain/${base%.nii}_brain -f 0.5 -g 0 -m; done && \
+#    mv /app/*/*_brain.nii.gz /data/; \
+#done
 

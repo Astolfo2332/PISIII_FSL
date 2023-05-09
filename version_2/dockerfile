@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:latest
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -20,16 +20,18 @@ RUN git clone https://github.com/rordenlab/dcm2niix.git && \
     make install && \
     cd ../.. && \
     rm -rf dcm2niix
-    
+
 RUN wget -O- https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py | python3 - -d /usr/local/fsl 
 
 ENV FSLDIR=/usr/local/fsl
 ENV PATH=${FSLDIR}/bin:$PATH
+ENV FSLOUTPUTTYPE=NIFTI_GZ
 ENV LD_LIBRARY_PATH=${FSLDIR}/lib:$LD_LIBRARY_PATH
+
 
 WORKDIR /app
 
-COPY . /app
+COPY ./ST1 /app
 
 
 RUN mkdir /nifti && \ 
@@ -40,8 +42,15 @@ done
 RUN for file in /app/NIfTI/*/*.nii*; do \
         subfolder=$(basename "$(dirname "$file")"); \
         filename=$(basename "$file"); \
-mkdir /app/brain && \
-for file in /nifti/*.nii; do base=$(basename $file); bet $file /app/brain/${base%.nii}_brain -f 0.5 -g 0 -m; done && \
-    mv /app/*/*_brain.nii.gz /data/; \
-done
+        done
 
+RUN mkdir /app/brain /output && \
+    for file in /nifti/*.nii; do base=$(basename $file); \
+    bet $file /app/brain/${base%.nii}_brain -f 0.5 -g 0 -m;done && \
+    mv /app/brain/*_brain.nii.gz /output/ 
+    
+RUN cp -r /output /data/
+
+VOLUME /output
+
+CMD ["bash"]

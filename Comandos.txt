@@ -1,0 +1,1 @@
+docker cp my_container:/app/output /path/on/local/host // por si no encuentra el data

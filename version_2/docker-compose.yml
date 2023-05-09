@@ -3,5 +3,5 @@ services:
   fsl:
     build: .
     volumes:
-      - ./data:/data
+      - ./salida:/data
 
