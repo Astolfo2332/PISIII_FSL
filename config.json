@@ -28,7 +28,7 @@
         {
             "dataType": "func",
             "modalityLabel": "bold",
-            "customLabels":"t-test",
+            "customLabels":"test-a",
             "criteria": {
                 "SeriesNumber": 302
             },
@@ -53,7 +53,7 @@
         {
             "dataType": "func",
             "modalityLabel": "bold",
-            "customLabels":"t-test-2",
+            "customLabels":"test-b",
             "criteria": {
                 "SeriesNumber": 702
             },
@@ -65,7 +65,7 @@
         {
             "dataType": "func",
             "modalityLabel": "bold",
-            "customLabels":"t-test-3",
+            "customLabels":"test-c",
             "criteria": {
                 "SeriesNumber": 502
             },

@@ -18,25 +18,27 @@ ENV PATH=${FSLDIR}/bin:$PATH
 ENV FSLOUTPUTTYPE=NIFTI_GZ
 ENV LD_LIBRARY_PATH=${FSLDIR}/lib:$LD_LIBRARY_PATH
 
- 
-
-CMD for patient_dir in /output/sub-*; do \
-        patient_num=$(basename $patient_dir); \
-        if [ -d ${patient_dir}/anat ]; then \
-            mkdir -p /output/${patient_num}/derivatives/anat && \
-            for file in ${patient_dir}/anat/*.nii.gz*; do \
-                base=$(basename $file); \
-                bet $file /output/${patient_num}/derivatives/anat/${base%.nii.gz}_brain -f 0.5 -g 0; \
-            done; \
-        fi; \
-        if [ -d ${patient_dir}/func ]; then \
-            mkdir -p /output/${patient_num}/derivatives/func && \
-            for file in ${patient_dir}/func/*.nii.gz*; do \
-                base=$(basename $file); \
-                bet $file /output/${patient_num}/derivatives/func/${base%.nii.gz}_brain -F -f 0.5 -g 0; \
-            done; \
-        fi; \
-    done
+CMD if [ -z "$(ls -A /output)" ]; then \
+    echo "Output directory is empty. wait till dcm2bids finish and run the compose again" ;\
+    else \
+        for patient_dir in /output/sub-*; do \
+            patient_num=$(basename $patient_dir); \
+            if [ -d ${patient_dir}/anat ]; then \
+                mkdir -p /output/${patient_num}/derivatives/anat && \
+                for file in ${patient_dir}/anat/*.nii.gz*; do \
+                    base=$(basename $file); \
+                    bet $file /output/${patient_num}/derivatives/anat/${base%.nii.gz}_brain -f 0.5 -g 0; \
+                done; \
+            fi; \
+            if [ -d ${patient_dir}/func ]; then \
+                mkdir -p /output/${patient_num}/derivatives/func && \
+                for file in ${patient_dir}/func/*.nii.gz*; do \
+                    base=$(basename $file); \
+                    bet $file /output/${patient_num}/derivatives/func/${base%.nii.gz}_brain -F -f 0.5 -g 0; \
+                done; \
+            fi; \
+        done \
+    fi; 
 
 
 

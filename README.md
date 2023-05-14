@@ -1,7 +1,23 @@
 # La increíble automatización    
 Cosas fáciles que uno se propone
 
-##
+## Uso
+- Estructura de los archivos: 
+```
+raw/
+├── 01/
+│   ├── S/
+│   │   ├── DICOM files
+│   └── ...
+├── 02/
+│   ├── S/
+│   │   ├── DICOM files
+│   └── ...
+└── n/
+    ├── S/
+    │   ├── DICOM files
+    └── ...
+```
 
 ```
       ░░░░                                                                                            ░░                                      
