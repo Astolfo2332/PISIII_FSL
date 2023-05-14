@@ -1,0 +1,82 @@
+{
+    "descriptions": [
+        {
+            "dataType": "anat",
+            "modalityLabel": "T1w",
+            "criteria": {
+                "MRAcquisitionType": "3D",
+                "SeriesDescription": "*T1*"
+            },
+            "ignore": [
+                "ManufacturerModelName",
+                "InstitutionAddress"
+            ]
+        },
+        {
+            "dataType": "func",
+            "modalityLabel": "bold",
+            "customLabels": "FE-EPI-AUDITIVO",
+            "criteria": {
+                "SeriesDescription": "*FE_EPI_AUDITIVO*",
+                "ProtocolName" : "*FE_EPI_AUDITIVO*"
+            },
+            "ignore": [
+                "ManufacturerModelName",
+                "InstitutionAddress"
+            ]
+        },
+        {
+            "dataType": "func",
+            "modalityLabel": "bold",
+            "customLabels":"t-test",
+            "criteria": {
+                "SeriesNumber": 302
+            },
+            "ignore": [
+                "ManufacturerModelName",
+                "InstitutionAddress"
+            ]
+        },
+        {
+            "dataType": "func",
+            "modalityLabel": "bold",
+            "customLabels":"FE-EPI-VISUAL",
+            "criteria": {
+                "SeriesDescription": "*FE_EPI_VISUAL*",
+                "ProtocolName": "FE_EPI_VISUAL"
+            },
+            "ignore": [
+                "ManufacturerModelName",
+                "InstitutionAddress"
+            ]
+        },
+        {
+            "dataType": "func",
+            "modalityLabel": "bold",
+            "customLabels":"t-test-2",
+            "criteria": {
+                "SeriesNumber": 702
+            },
+            "ignore": [
+                "ManufacturerModelName",
+                "InstitutionAddress"
+            ]
+        },
+        {
+            "dataType": "func",
+            "modalityLabel": "bold",
+            "customLabels":"t-test-3",
+            "criteria": {
+                "SeriesNumber": 502
+            },
+            "ignore": [
+                "ManufacturerModelName",
+                "InstitutionAddress"
+            ]
+        }
+    ],
+    "ignore": [
+        "ManufacturerModelName",
+        "InstitutionAddress"
+    ]
+}

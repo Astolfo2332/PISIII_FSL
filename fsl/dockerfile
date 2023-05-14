@@ -1,0 +1,51 @@
+FROM ubuntu:latest
+
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    wget \
+    gnupg \
+    software-properties-common \
+    python3 \
+    python3-pip && \
+    apt-get install -y git build-essential cmake zlib1g-dev  &&\
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN wget -O- https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py | python3 - -d /usr/local/fsl 
+
+ENV FSLDIR=/usr/local/fsl
+ENV PATH=${FSLDIR}/bin:$PATH
+ENV FSLOUTPUTTYPE=NIFTI_GZ
+ENV LD_LIBRARY_PATH=${FSLDIR}/lib:$LD_LIBRARY_PATH
+
+ 
+
+CMD for patient_dir in /output/sub-*; do \
+        patient_num=$(basename $patient_dir); \
+        if [ -d ${patient_dir}/anat ]; then \
+            mkdir -p /output/${patient_num}/derivatives/anat && \
+            for file in ${patient_dir}/anat/*.nii.gz*; do \
+                base=$(basename $file); \
+                bet $file /output/${patient_num}/derivatives/anat/${base%.nii.gz}_brain -f 0.5 -g 0; \
+            done; \
+        fi; \
+        if [ -d ${patient_dir}/func ]; then \
+            mkdir -p /output/${patient_num}/derivatives/func && \
+            for file in ${patient_dir}/func/*.nii.gz*; do \
+                base=$(basename $file); \
+                bet $file /output/${patient_num}/derivatives/func/${base%.nii.gz}_brain -F -f 0.5 -g 0; \
+            done; \
+        fi; \
+    done
+
+
+
+
+
+
+
+    
+    
+
+
+

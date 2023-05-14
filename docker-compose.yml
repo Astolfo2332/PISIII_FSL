@@ -1,6 +1,28 @@
 version: "3"
+
+
 services:
-  fsl:
-    build: .
+  dcm2bids:
+    build: 
+        context: ./bids
+        dockerfile: Dockerfile
     volumes:
-      - ./data:/data
+      - ./raw:/app
+      - ./output:/output
+      - ./config.json:/config/config.json
+      
+  fsl: 
+    build: 
+      context: ./fsl
+      dockerfile: Dockerfile
+    volumes:
+      - ./output:/output
+    depends_on:
+      - dcm2bids  
+    networks:
+      - my_network
+
+
+networks:
+  my_network:
+

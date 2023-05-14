@@ -1,7 +1,0 @@
-version: "3"
-services:
-  fsl:
-    build: .
-    volumes:
-      - ./salida:/data
-
