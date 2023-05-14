@@ -1,8 +1,16 @@
 # La increíble automatización    
 Cosas fáciles que uno se propone
-
+## Instalación
+- Clonar el repositorio en el git bash:
+```
+git clone https://github.com/Astolfo2332/PISIII_FSL
+```
+- Crear las imagenes y contenedores necesarios, abrir un terminal en la ruta donde se clono y correr:
+```
+docker-compose build
+```
 ## Uso
-- Estructura de los archivos: 
+- Copiar los archivos a la carpeta clonada con la siguiente estructura: 
 ```
 raw/
 ├── 01/
@@ -18,7 +26,12 @@ raw/
     │   ├── DICOM files
     └── ...
 ```
+En la carpeta de interés con los archivos clonados del GitHub correr:
+```
+ docker-compose up
+``` 
 
+##
 ```
       ░░░░                                                                                            ░░                                      
       ░░░░                                                                                            ░░                                      
