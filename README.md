@@ -26,10 +26,25 @@ raw/
     │   ├── DICOM files
     └── ...
 ```
+Donde 01, 02, ...n puede ser cualquier nombre que se le de al paciente, y S1, S2, ... n son las pruebas realizadas.
+- Archivos JSON:
+Se pueden modificar los archivos json.
+- parameters.json
+Aquí se encuentran los parámetros del los estudios. Modificarlos de ser necesario para una mejor extracción u análisis
+- config.json
+En este archivo se especifica los nombres y características de los estudios realizados, en formato bids para mayor información consular: [How to create a configuration file](https://unfmontreal.github.io/Dcm2Bids/docs/how-to/create-config-file/)
+- dataset_description.json
+Información relevante de los datos
+- participants.json y .tsv
+En el json se especifica la información de las columnas presentes en el .tsv
+
 En la carpeta de interés con los archivos clonados del GitHub correr:
 ```
  docker-compose up
 ``` 
+- Notas:
+Es necesario correr el docker-compose up dos veces ya que la primera hará la conversión a bids y la segunda hará el preprocesamiento
+
 
 ##
 ```

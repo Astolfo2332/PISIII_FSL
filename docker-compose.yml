@@ -10,13 +10,16 @@ services:
       - ./raw:/app
       - ./output:/output
       - ./config.json:/config/config.json
-      
+      - ./dataset_description.json:/config/dataset_description.json
+      - ./participants.tsv:/config/participants.tsv
+      - ./participants.json:/config/participants.json
   fsl: 
     build: 
       context: ./fsl
       dockerfile: Dockerfile
     volumes:
       - ./output:/output
+      - ./parameters.json:/config/parameters.json
     depends_on:
       - dcm2bids
 networks:

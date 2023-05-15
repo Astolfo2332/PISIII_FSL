@@ -15,11 +15,17 @@
         {
             "dataType": "func",
             "modalityLabel": "bold",
-            "customLabels": "FE-EPI-AUDITIVO",
+            "customLabels": "task-rest",
+            "CustomFields": {
+                "TaskName": "auditivo"
+              },
             "criteria": {
                 "SeriesDescription": "*FE_EPI_AUDITIVO*",
                 "ProtocolName" : "*FE_EPI_AUDITIVO*"
             },
+            "sidecarChanges": {
+                "TaskName": "auditivo"
+              },
             "ignore": [
                 "ManufacturerModelName",
                 "InstitutionAddress"
@@ -28,11 +34,17 @@
         {
             "dataType": "func",
             "modalityLabel": "bold",
-            "customLabels":"FE-EPI-VISUAL",
+            "customLabels":"task-rest",
+            "CustomFields": {
+                "TaskName": "visual"
+              },
             "criteria": {
                 "SeriesDescription": "*FE_EPI_VISUAL*",
                 "ProtocolName": "FE_EPI_VISUAL"
             },
+            "sidecarChanges": {
+                "TaskName": "visual"
+              },
             "ignore": [
                 "ManufacturerModelName",
                 "InstitutionAddress"
