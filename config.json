@@ -28,46 +28,10 @@
         {
             "dataType": "func",
             "modalityLabel": "bold",
-            "customLabels":"test-a",
-            "criteria": {
-                "SeriesNumber": 302
-            },
-            "ignore": [
-                "ManufacturerModelName",
-                "InstitutionAddress"
-            ]
-        },
-        {
-            "dataType": "func",
-            "modalityLabel": "bold",
             "customLabels":"FE-EPI-VISUAL",
             "criteria": {
                 "SeriesDescription": "*FE_EPI_VISUAL*",
                 "ProtocolName": "FE_EPI_VISUAL"
-            },
-            "ignore": [
-                "ManufacturerModelName",
-                "InstitutionAddress"
-            ]
-        },
-        {
-            "dataType": "func",
-            "modalityLabel": "bold",
-            "customLabels":"test-b",
-            "criteria": {
-                "SeriesNumber": 702
-            },
-            "ignore": [
-                "ManufacturerModelName",
-                "InstitutionAddress"
-            ]
-        },
-        {
-            "dataType": "func",
-            "modalityLabel": "bold",
-            "customLabels":"test-c",
-            "criteria": {
-                "SeriesNumber": 502
             },
             "ignore": [
                 "ManufacturerModelName",

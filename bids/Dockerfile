@@ -2,7 +2,8 @@ FROM unfmontreal/dcm2bids
 
 WORKDIR /app
 
-CMD if [ "$(ls -A /app)" ]; then \
+
+CMD if [ "$(ls -A /output)" ]; then \
         echo "Output directory is not empty, skipping dcm2bids"; \
     else \
         for patient_dir in /app/*; do \
