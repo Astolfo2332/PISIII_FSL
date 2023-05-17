@@ -2,10 +2,7 @@ version: "3"
 
 services:
   dcm2bids:
-    build: 
-        context: ./Docker/bids
-        dockerfile: Dockerfile
-    container_name: dcm2bids
+    image: dcm2bids/pisiii
     volumes:
       - ./raw:/app
       - ./output:/output
@@ -14,13 +11,10 @@ services:
       - ./custom/participants.tsv:/config/participants.tsv
       - ./custom/participants.json:/config/participants.json
   fsl: 
-    build: 
-      context: ./Docker/fsl
-      dockerfile: Dockerfile
-    container_name: fsl
+    image: fsl/pisiii
     volumes:
       - ./output:/output
-      - ./parameters.json:/config/parameters.json
+      - ./custom/parameters.json:/config/parameters.json
     depends_on:
       - dcm2bids
 networks:

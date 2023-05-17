@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  dcm2bids:
+    build: 
+        context: ./bids
+        dockerfile: dockerfile
+    image: dcm2bids/pisiii
+  fsl: 
+    build: 
+      context: ./fsl
+      dockerfile: dockerfile
+    image: fsl/pisiii

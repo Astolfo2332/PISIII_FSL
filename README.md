@@ -5,12 +5,13 @@ Cosas fáciles que uno se propone
 ```
 git clone https://github.com/Astolfo2332/PISIII_FSL
 ```
-- Crear las imagenes y contenedores necesarios, abrir un terminal en la ruta donde se clono y correr:
+- Crear las imágenes necesarias, abrir un terminal en la ruta donde se clono con ruta en la carpeta /Docker:
 ```
-docker-compose build
+docker-compose -f compose-build.yml build
 ```
+Esto creara las imágenes necesarias para correr los contenedores
 ## Uso
-- Copiar los archivos a la carpeta clonada con la siguiente estructura: 
+- Estructurar los archivos DICOM base de la siguiente forma: 
 ```
 raw/
 ├── 01/
@@ -42,9 +43,8 @@ Información relevante de los datos
 En el json se especifica la información de las columnas presentes en el .tsv
 - Un docker-compose adicional este archivo no se debe modificar debido a que se utiliza en la mejora del proceso
 ## Uso después de creado el build:
-- En la carpeta custom se encuentra un archivo docker-compose este tomara las imágenes creadas en el docker-compose build del paso anterior (importante: se debe hacer el build en la carpeta clonada del git ya que este le dará el nombre y la estructura a las imágenes).
-
-- Cuando este creado las imágenes se copia el archivo docker-compose que esta dentro de la carpeta de custom en el directorio de interés con la estructura mencionada anteriormente en "Uso" y desde el terminal se ingresa:
+- Copiar el archivo que esta al exterior 
+- Cuando este creado las imágenes se copia el archivo docker-compose y la carpeta custom con las modificaciones pertinentes, en el directorio de interés con la estructura mencionada anteriormente en "Uso" y desde el terminal se ingresa:
 
 ```
  docker-compose up
