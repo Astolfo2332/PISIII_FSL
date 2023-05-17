@@ -52,7 +52,25 @@ En el json se especifica la información de las columnas presentes en el .tsv
 ## Notas:
 
 - Es necesario correr el docker-compose up dos veces ya que la primera hará la conversión a bids y la segunda hará el preprocesamiento, también funciona para validar la estructura de los datos y hacer las correcciones necesarias en el config del bids 
+## Ejemplo de la estructura de una carpeta para el estudio: 
 
+```
+├───custom
+├───docker-compose.yml
+└───raw
+    ├───01
+    │   ├───S1
+    │   ├───S2
+    │   ├───S3
+    │   ├───S4
+    │   └───S5
+    └───02
+        ├───S1
+        ├───S2
+        ├───S3
+        ├───S4
+        └───S5
+```
 
 ##
 ```
