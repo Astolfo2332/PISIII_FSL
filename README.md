@@ -27,23 +27,31 @@ raw/
     └── ...
 ```
 Donde 01, 02, ...n puede ser cualquier nombre que se le de al paciente, y S1, S2, ... n son las pruebas realizadas.
+## Carpeta /custom 
+En esta carpeta se encuentran los archivos necesarios para un correcto funcionamiento del código, todas son personalizables pero no se les puede cambiar el nombre.
+
 - Archivos JSON:
 Se pueden modificar los archivos json.
-- parameters.json
+- parameters.json:
 Aquí se encuentran los parámetros del los estudios. Modificarlos de ser necesario para una mejor extracción u análisis
-- config.json
+- config.json:
 En este archivo se especifica los nombres y características de los estudios realizados, en formato bids para mayor información consular: [How to create a configuration file](https://unfmontreal.github.io/Dcm2Bids/docs/how-to/create-config-file/)
-- dataset_description.json
+- dataset_description.json:
 Información relevante de los datos
-- participants.json y .tsv
+- participants.json y .tsv:
 En el json se especifica la información de las columnas presentes en el .tsv
+- Un docker-compose adicional este archivo no se debe modificar debido a que se utiliza en la mejora del proceso
+## Uso después de creado el build:
+- En la carpeta custom se encuentra un archivo docker-compose este tomara las imágenes creadas en el docker-compose build del paso anterior (importante: se debe hacer el build en la carpeta clonada del git ya que este le dará el nombre y la estructura a las imágenes).
 
-En la carpeta de interés con los archivos clonados del GitHub correr:
+- Cuando este creado las imágenes se copia el archivo docker-compose que esta dentro de la carpeta de custom en el directorio de interés con la estructura mencionada anteriormente en "Uso" y desde el terminal se ingresa:
+
 ```
  docker-compose up
 ``` 
-- Notas:
-Es necesario correr el docker-compose up dos veces ya que la primera hará la conversión a bids y la segunda hará el preprocesamiento
+## Notas:
+
+- Es necesario correr el docker-compose up dos veces ya que la primera hará la conversión a bids y la segunda hará el preprocesamiento, también funciona para validar la estructura de los datos y hacer las correcciones necesarias en el config del bids 
 
 
 ##
