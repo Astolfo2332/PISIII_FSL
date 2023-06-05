@@ -15,6 +15,7 @@ services:
     volumes:
       - ./output:/output
       - ./custom/parameters.json:/config/parameters.json
+      - ./custom/design.fsf:/config/design.fsf
     depends_on:
       - dcm2bids
 networks:
