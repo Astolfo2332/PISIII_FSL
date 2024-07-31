@@ -1,5 +1,5 @@
-# La increíble automatización    
-Cosas fáciles que uno se propone
+# PIPELINE AUTOMATIZADO CON TECNOLOGÍA DE CONTENEDORES PARA EL PREPROCESAMIENTO DE TASK FMRI    
+
 ## Instalación
 - Clonar el repositorio en el git bash:
 ```
